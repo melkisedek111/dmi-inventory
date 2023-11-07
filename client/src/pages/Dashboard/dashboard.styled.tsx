@@ -1,22 +1,28 @@
 import styled from "styled-components";
 
 export const DashboardContainer = styled.div`
-    min-height: 100vh;
-    min-width: 100vh;
-    padding: 10px 130px;
-    
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+   padding: 30px;
+   min-height: 100vh;
 `;
 
-export const CustomCardContainer = styled.div`
-   display: flex;
-   justify-content: space-between;
-   align-items: center; 
-   gap: 40px;
-   flex-wrap: wrap;
-`; 
+
+export const PageTitleHeader = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 3rem;
+
+    h3 {
+        font-weight: normal;
+    }
+
+    svg {
+        color: #2178D0;
+    }
+`
+
+
+
 
 
 export const TransactionTableContainer = styled.div`
@@ -26,4 +32,21 @@ export const TransactionTableContainer = styled.div`
     padding: 20px;
     border-radius: 10px;
     
+`
+
+export const ReportContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+`;
+
+export const SideContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+`
+
+export const MainDashboardContainer = styled.div`
+    display: flex;
+    gap: 20px;
 `

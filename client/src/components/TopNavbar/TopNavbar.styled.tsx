@@ -1,68 +1,45 @@
 import styled from "styled-components";
 
-export const TopNavbarWrapper = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #fff;
-    gap: 10px;
-`;
 
-export const LinkContainer = styled.a`
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    height: inherit;
-    padding: 10px 0;
-
-    svg {
-        color: #595959;
-    }
-
-    &:hover {
-        color: #01F7FE;
-        svg {
-            color: #01F7FE;
-        }
-    }
-
-    position: relative;
-    text-decoration: none;
-
-    &::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(to right, #01F7FE, #01F7FE);
-        transition: width 0.3s ease;
-    }
-
-    &:hover::before {
-        width: 100%;
-    }
-`;
-
-
-
-export const LinksContainer = styled.div`
+export const TopNavbarContainer = styled.div`
+    height: 80px;
     display: flex;
     align-items: center;
     gap: 20px;
-    margin-left: 20px;
-`
+    padding: 0px 25px;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+`;
 
-export const ProfileContainer = styled.div`
-margin-left: auto;
-`
 
-export const AppLogoContainer = styled.img`
-    height: 50px;
-    object-fit: contain
+export const LogoContainer = styled.p`
+    span {
+        margin: 0;
+        font-size: 25px;
+    }
 
-`
+    span:nth-child(1) {
+        color: blue;
+    }
 
+    span:nth-child(2) {
+        font-weight: bold;
+    }
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    height: inherit;
+    border-right: 1px solid lightgray;
+    padding-right: 20px;
+`;
+
+export const PageTitleContainer = styled.div`
+    h4 {
+        font-size: 1.7rem;
+    }
+`;
+
+export const AvatarContainer = styled.div`
+
+`;

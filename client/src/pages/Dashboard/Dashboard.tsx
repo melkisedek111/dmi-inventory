@@ -1,48 +1,39 @@
 import React from 'react'
-import { CustomCardContainer, DashboardContainer, TransactionTableContainer } from './dashboard.styled'
-import CustomCard, { ICustomCard } from '../../components/CustomCard/CustomCard'
+import { DashboardContainer, MainDashboardContainer, PageTitleHeader, ReportContainer, SideContainer, TransactionTableContainer } from './dashboard.styled'
 import expired from "../../assets/images/deadline.png";
 import outOfStock from "../../assets/images/out-of-stock.png";
 import totalAvailableStocks from "../../assets/images/packages.png";
 import lastItemConsumed from "../../assets/images/list-items.png"
-import StickyHeadTable from '../../components/CustomTable/CustomTable';
+
+import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+import CardsContainer from '../../components/CardsContainer/CardsContainer';
+import PieChart from '../../components/PieChart/PieChart';
+import LineChart from '../../components/LineChart/LineChart';
+import LatestRelease from '../../components/LatestRelease/LatestRelease';
+import ReleaseHistory from '../../components/ReleaseHistory/ReleaseHistory';
+
 
 const Dashboard = () => {
 
-    const customCards: ICustomCard[] = [
-        {
-            titleHeader: "Nearly Expired",
-            image: expired,
-            value: 20
-        },
-        {
-            titleHeader: "Nearly Out of Stock",
-            image: outOfStock,
-            value: 120
-        },
-        {
-            titleHeader: "Total Available Items",
-            image: totalAvailableStocks,
-            value: 520
-        },
-        {
-            titleHeader: "Last Item Released/Consumed",
-            image: lastItemConsumed,
-            value: "Reagent - B"
-        },
-    ] 
-
     return (
         <DashboardContainer>
-            <CustomCardContainer>
-                {
-                    customCards.map(item => <CustomCard titleHeader={item.titleHeader} image={item.image} value={item.value} />)
-                }
-            </CustomCardContainer>
-            <TransactionTableContainer>
-                <h1>Transaction History</h1>
-                <StickyHeadTable />
-            </TransactionTableContainer>
+            <PageTitleHeader>
+                <DashboardRoundedIcon />
+                <h3>Main Dashboard</h3>
+            </PageTitleHeader>
+
+            <MainDashboardContainer>
+                <ReportContainer>
+                    <CardsContainer />
+                    <ReleaseHistory />
+                    <LineChart />
+                </ReportContainer>
+                <SideContainer>
+                    <PieChart />
+                    <LatestRelease />
+                </SideContainer>
+            </MainDashboardContainer>
+
         </DashboardContainer>
     )
 }

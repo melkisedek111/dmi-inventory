@@ -1,15 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { AppContainer, MainContainer } from './App.styled';
 import TopNavbar from './components/TopNavbar/TopNavbar';
-import { AppContainer } from './App.styled';
+import SideNavbar from './components/SideNavbar/SideNavbar';
 import Dashboard from './pages/Dashboard/Dashboard';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
     return (
         <AppContainer>
+            {/* Top Navbar */}
             <TopNavbar />
-            <Dashboard/>
+            {/* Side Navbar */}
+            <MainContainer>
+                <SideNavbar />
+                {/* Main */}
+                <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/inventory" element={<div>Inventory</div>} />
+                </Routes>
+                
+            </MainContainer>
+
         </AppContainer>
     );
 }
