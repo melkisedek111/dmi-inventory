@@ -13,7 +13,8 @@ export const PageTitleHeader = styled.div`
     margin-bottom: 3rem;
 
     h3 {
-        font-weight: normal;
+        font-weight: bold;
+        font-size: 25px;
     }
 
     svg {

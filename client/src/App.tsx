@@ -5,6 +5,7 @@ import TopNavbar from './components/TopNavbar/TopNavbar';
 import SideNavbar from './components/SideNavbar/SideNavbar';
 import Dashboard from './pages/Dashboard/Dashboard';
 import { Routes, Route } from 'react-router-dom';
+import Inventory from './pages/Inventory/Inventory';
 
 function App() {
     return (
@@ -17,7 +18,7 @@ function App() {
                 {/* Main */}
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
-                    <Route path="/inventory" element={<div>Inventory</div>} />
+                    <Route path="/inventory" element={<Inventory />} />
                 </Routes>
                 
             </MainContainer>
