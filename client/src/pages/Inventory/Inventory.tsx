@@ -25,6 +25,8 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
 import sampleImage from "../../assets/sample/1.jpg"
 import sampleImage2 from "../../assets/sample/2.jpg"
+import CustomModal from '../../components/CustomModal/CustomModal';
+import AddItemForm from '../../components/AddItemForm/AddItemForm';
 
 
 interface IItems {
@@ -92,6 +94,7 @@ const InventorySelectedItem: React.FC = () => {
 }
 const isOpenQuantityAction = signal<boolean>(false);
 const isEditQuantityAction = signal<boolean>(false);
+const selectedItemUpdateQuantity = signal<number | undefined>(undefined);
 const items = signal<IItems[]>([
     {
         id: 1,
@@ -109,16 +112,23 @@ const items = signal<IItems[]>([
     }
 ]);
 
+
+const CustomAddItemButton: React.FC = (props): JSX.Element => {
+    return <Button {...props} size="large" variant="outlined" startIcon={<AddRoundedIcon />}>
+        Add New Item
+    </Button>
+}
+
 const Inventory = () => {
     const handleShowQuantityAction = () => isOpenQuantityAction.value = true;
     const handleHideQuantityAction = () => isOpenQuantityAction.value = false;
-    
+
     const handleItemsWhenEditQuantity = (id: number, isEdit: boolean) => {
         items.value = items.value.map(item => ({ ...item, quantity: { ...item.quantity, isEdit: id === item.id ? isEdit : item.quantity.isEdit } }));
     }
 
-    const handleShowQuantityActionWhenEdit = (id: number) => {
-        // handleItemsWhenEditQuantity(id, true);
+    const handleUpdateItemQuantity = (id: number) => {
+        // TODO: Request API for updating quantity
     }
 
     const handleHideQuantityActionWhenEdit = (id: number) => {
@@ -132,7 +142,6 @@ const Inventory = () => {
 
     return (
         <InventoryContainer>
-
             <PageTitleHeader>
                 <VaccinesRoundedIcon />
                 <h3>Inventory</h3>
@@ -147,9 +156,7 @@ const Inventory = () => {
                     }}
                 />
 
-                <Button size="large" variant="outlined" startIcon={<AddRoundedIcon />}>
-                    Add New Item
-                </Button>
+                <CustomModal customButtonComponent={CustomAddItemButton} customModalContent={AddItemForm} />
             </InventorySearchContainer>
 
             <InventoryButtonContainer>
@@ -214,10 +221,10 @@ const Inventory = () => {
                                             item.quantity.isEdit ? (
                                                 <ShowQuantityActionContainer>
                                                     <Stack direction="row" alignItems="center" justifyContent="center">
-                                                        <IconButton aria-label="Add" size="small" color="warning"  onClick={() => handleEditQuantity(item.id, true)}>
-                                                            <CancelRoundedIcon fontSize="inherit"/>
+                                                        <IconButton aria-label="Add" size="small" color="error" onClick={() => handleEditQuantity(item.id, true)}>
+                                                            <CancelRoundedIcon fontSize="inherit" />
                                                         </IconButton>
-                                                        <IconButton aria-label="Add" size="small" color="success">
+                                                        <IconButton aria-label="Add" size="small" color="success" onClick={() => handleUpdateItemQuantity(item.id)}>
                                                             <CheckCircleRoundedIcon fontSize="inherit" />
                                                         </IconButton>
                                                     </Stack>
